@@ -142,6 +142,9 @@ class Hand:
     def tidy(self, *args, **kwargs) -> None:
         ...
 
+    def touch(self, filter_: str) -> None:
+        ...
+
     @staticmethod
     def _hash(string: str) -> str:
         return sha256(
