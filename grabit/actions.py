@@ -56,28 +56,144 @@ class Action(ABC):
 
 
 class GrabAction(Action):
-    ...
+    def __init__(
+        self,
+        *args,
+        deepcopy: bool = False,
+        **kwargs,
+    ) -> None:
+        super().__init__(
+            *args,
+            **kwargs,
+        )
+        self._deepcopy = deepcopy
+
+    @property
+    def deepcopy(self) -> bool:
+        return self._deepcopy
+
+    def execute(self) -> None:
+        pass
+
+    def opposite(self) -> None:
+        pass
 
 
 class DropAction(Action):
-    ...
+    def __init__(
+        self,
+        *args,
+        replace: bool = False,
+        rename: bool = False,
+        **kwargs,
+    ) -> None:
+        super().__init__(
+            *args,
+            **kwargs,
+        )
+        self._replace = replace
+        self._rename  = rename
+
+    @property
+    def replace(self) -> bool:
+        return self._replace
+
+    @property
+    def rename(self) -> bool:
+        return self._rename
+
+    def execute(self) -> None:
+        pass
+
+    def opposite(self) -> None:
+        pass
 
 
 class MoveAction(Action):
-    ...
+    def __init__(
+        self,
+        *args,
+        replace: bool = False,
+        rename: bool = False,
+        chpath: bool = False,
+        **kwargs,
+    ) -> None:
+        super().__init__(
+            *args,
+            **kwargs,
+        )
+        self._replace = replace
+        self._rename  = rename
+        self._chpath  = chpath
+
+    @property
+    def replace(self) -> bool:
+        return self._replace
+
+    @property
+    def rename(self) -> bool:
+        return self._rename
+
+    @property
+    def chpath(self) -> bool:
+        return self._chpath
+
+    def execute(self) -> None:
+        pass
+
+    def opposite(self) -> None:
+        pass
 
 
 class ThrowAction(Action):
-    ...
+    def __init__(
+        self,
+        *args,
+        **kwargs,
+    ) -> None:
+        super().__init__(
+            *args,
+            **kwargs,
+        )
+
+    def execute(self) -> None:
+        pass
+
+    def opposite(self) -> None:
+        pass
 
 
 class WashAction(Action):
-    ...
+    def __init__(
+        self,
+        *args,
+        **kwargs,
+    ) -> None:
+        super().__init__(
+            *args,
+            **kwargs,
+        )
 
+    def execute(self) -> None:
+        pass
 
-class MakeDirAction(Action):
-    ...
+    def opposite(self) -> None:
+        pass
 
 
 class TidyAction(Action):
-    ...
+    def __init__(
+        self,
+        *args,
+        **kwargs,
+    ) -> None:
+        super().__init__(
+            *args,
+            **kwargs,
+        )
+
+    def execute(self) -> None:
+        pass
+
+    def opposite(self) -> None:
+        pass
