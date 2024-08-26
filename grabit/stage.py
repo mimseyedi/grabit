@@ -19,11 +19,9 @@ class Hand:
         name: str,
         password: str | None = None,
         *,
-        size: int | None = None,
         capacity: int = 50,
     ) -> None:
         self._name       = name
-        self._size       = size
         self._capacity   = capacity
         self._password   = password and \
                            self._hash(password)
@@ -61,20 +59,12 @@ class Hand:
         return self._name
 
     @property
-    def size(self) -> int:
-        return self._size
-
-    @size.setter
-    def size(self, nsize: int) -> None:
-        self._size = nsize
-
-    @property
     def capacity(self) -> int:
         return self._capacity
 
     @capacity.setter
     def capacity(self, ncap: int) -> None:
-        self._size = ncap
+        self._capacity = ncap
 
     @property
     def password(self) -> str:
