@@ -185,12 +185,18 @@ class TidyAction(Action):
     def __init__(
         self,
         *args,
+        dirname: str | None = None,
         **kwargs,
     ) -> None:
         super().__init__(
             *args,
             **kwargs,
         )
+        self._dirname = dirname
+
+    @property
+    def dirname(self):
+        return self._dirname
 
     def execute(self) -> None:
         pass
