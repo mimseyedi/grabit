@@ -95,6 +95,9 @@ use thiserror::{
 
     #[error("General database error: {0}")]
     GeneralDatabaseError(String),
+
+    #[error(transparent)]
+    SqlxError(#[from] sqlx::Error),
 }
 
 #[derive(
