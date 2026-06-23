@@ -5,6 +5,7 @@ use std::io::{
 use std::path::{
     Path,
 };
+use sqlx;
 use crate::interface::output::{
     GbOutputT,
     GbOutputKind,
@@ -78,3 +79,13 @@ impl_from_for_gb_error!(IOError, IOError);
 impl_from_for_gb_error!(LedgerError, LedgerError);
 impl_from_for_gb_error!(HandError, HandError);
 impl_from_for_gb_error!(DBError, DBError);
+
+impl From<sqlx::Error> for GbError {
+    fn from(e: sqlx::Error) -> Self {
+        GbError::new(
+            GbErrorKind::DBError(
+                DBError::SqlxError(e)
+            )
+        )
+    }
+}
